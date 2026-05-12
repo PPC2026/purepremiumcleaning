@@ -716,7 +716,8 @@ function openModal(id){document.getElementById('modal-'+id).style.display='block
 function closeModal(id){document.getElementById('modal-'+id).style.display='none';document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal('mentions');closeModal('cgv');}});
 
-buildSdb();calc();
+window.addEventListener('load',function(){buildSdb();calc();});
+
 </script>
 </body>
 </html>
