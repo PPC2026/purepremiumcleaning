@@ -253,17 +253,17 @@ footer{background:var(--text);padding:2.5rem 3rem;display:flex;align-items:cente
     <li><a href="a-propos.html">À propos</a></li>
   </ul>
   <a href="https://wa.me/33781137754" target="_blank" class="nav-cta">Nous contacter</a>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
-  <a href="index.html#services" onclick="toggleMenu()">Services</a>
-  <a href="index.html#zones" onclick="toggleMenu()">Zones</a>
-  <a href="paris.html" onclick="toggleMenu()">Paris</a>
-  <a href="nice.html" onclick="toggleMenu()">Nice</a>
-  <a href="index.html#devis" onclick="toggleMenu()">Simulateur</a>
-  <a href="a-propos.html" onclick="toggleMenu()">À propos</a>
+  <a href="index.html#services" onclick="closeMobileMenu()">Services</a>
+  <a href="index.html#zones" id="ham-btn">Zones</a>
+  <a href="paris.html" onclick="closeMobileMenu()">Paris</a>
+  <a href="nice.html" onclick="closeMobileMenu()">Nice</a>
+  <a href="index.html#devis" onclick="closeMobileMenu()">Simulateur</a>
+  <a href="a-propos.html" onclick="closeMobileMenu()">À propos</a>
   <a href="https://wa.me/33781137754" target="_blank" style="color:var(--cream);background:var(--green);padding:.85rem 1rem;text-align:center;margin-top:.5rem">Nous contacter</a>
 </div>
 
@@ -729,6 +729,8 @@ function buildTxt(){
 function copyDevis(){navigator.clipboard.writeText(buildTxt()).then(()=>{const b=event.target;b.textContent='Copié !';setTimeout(()=>{b.textContent='Copier le devis';},2000);}).catch(()=>{});}
 function sendWa(){const txt=encodeURIComponent('Bonjour Pure Premium Cleaning,\n\nVoici ma simulation :\n\n'+buildTxt()+'\n\nPouvez-vous me contacter ?');window.open('https://wa.me/33781137754?text='+txt,'_blank');}
 
+document.addEventListener("DOMContentLoaded",function(){var btn=document.getElementById("hamburger");if(btn){btn.addEventListener("click",function(){btn.classList.toggle("open");document.getElementById("mobile-menu").classList.toggle("open");});}});
+function closeMobileMenu(){document.getElementById("hamburger").classList.remove("open");document.getElementById("mobile-menu").classList.remove("open");}
 function toggleMenu(){
   const h=document.getElementById('hamburger');
   const m=document.getElementById('mobile-menu');
