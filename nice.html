@@ -152,8 +152,8 @@ footer{background:var(--text);padding:2.5rem 3rem;display:flex;align-items:cente
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(245,236,215,.98);backdrop-filter:blur(12px);z-index:99;flex-direction:column;padding:1.5rem 2rem;border-bottom:0.5px solid rgba(44,74,53,.12)}
-.mobile-menu.open{display:flex}
+.mobile-menu{display:flex;flex-direction:column;visibility:hidden;opacity:0;pointer-events:none;position:fixed;top:64px;left:0;right:0;background:rgba(245,236,215,.98);backdrop-filter:blur(12px);z-index:99;flex-direction:column;padding:1.5rem 2rem;border-bottom:0.5px solid rgba(44,74,53,.12)}
+.mobile-menu.open{visibility:visible;opacity:1;pointer-events:auto;}
 .mobile-menu a{font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--green);text-decoration:none;padding:.85rem 0;border-bottom:0.5px solid rgba(44,74,53,.08);opacity:.8}
 .mobile-menu a:last-child{border-bottom:none}
 
@@ -201,6 +201,9 @@ footer{background:var(--text);padding:2.5rem 3rem;display:flex;align-items:cente
   <a href="a-propos.html" onclick="toggleMenu()">À propos</a>
   <a href="https://wa.me/33781137754" target="_blank" style="color:var(--cream);background:var(--green);padding:.85rem 1rem;text-align:center;margin-top:.5rem;opacity:1">Nous contacter</a>
 </div>
+
+<!-- HERO -->
+<section class="hero">
   <p class="hero-breadcrumb fade-up"><a href="index.html">Accueil</a> &nbsp;/&nbsp; Nice & Côte d'Azur</p>
   <p class="hero-tag fade-up">Prestataire ménage Airbnb · Là où tout a commencé</p>
   <h1 class="hero-title fade-up delay-1">Ménage Airbnb<br><em>Nice & Côte d'Azur</em></h1>
