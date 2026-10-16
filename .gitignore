@@ -1,0 +1,5 @@
+# Documents internes : jamais sur GitHub (dépôt public)
+brand-kit/
+*.zip
+.DS_Store
+Thumbs.db

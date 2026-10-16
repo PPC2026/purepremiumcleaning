@@ -1,0 +1,6 @@
+# GitHub Pages : ces fichiers restent dans le dépôt mais ne sont pas servis sur purepremiumcleaning.fr
+exclude:
+  - CLAUDE.md
+  - README.md
+  - .gitignore
+  - brand-kit
