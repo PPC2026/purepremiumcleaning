@@ -167,7 +167,7 @@ select:focus,input[type=number]:focus{border-color:var(--green)}
 .sim-btn.light:hover{background:var(--cream-dark)}
 .sim-btn.dark{background:rgba(245,236,215,.12);color:var(--cream);border:0.5px solid rgba(245,236,215,.2)}
 .sim-btn.dark:hover{background:rgba(245,236,215,.2)}
-.zone-selector{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(44,74,53,.15);margin-bottom:1.5rem}
+.zone-selector{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(44,74,53,.15);margin-bottom:1.5rem}
 .zone-btn{font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;padding:.65rem;cursor:pointer;border:none;background:var(--white);color:var(--muted);transition:all .2s;text-align:center}
 .zone-btn.active{background:var(--green);color:var(--cream)}
 .info-note{font-family:var(--sans);font-size:11px;font-weight:300;color:var(--muted);line-height:1.6;margin-bottom:1rem;padding:.6rem .85rem;border-left:2px solid rgba(44,74,53,.2)}
@@ -392,11 +392,11 @@ footer{background:var(--text);padding:2.5rem 3rem;display:flex;align-items:cente
         <div class="zone-cities">Nice et alentours<br>Côte d'Azur</div>
         <div class="zone-link">En savoir plus →</div>
       </a>
-      <div class="zone-card" style="opacity:.6;pointer-events:none">
+      <div class="zone-card">
         <div class="zone-name">Cannes</div>
-        <div class="zone-region">Prochainement</div>
-        <div class="zone-cities">Ouverture prévue<br>Côte d'Azur</div>
-        <div class="zone-soon">Bientôt disponible</div>
+        <div class="zone-region">Zone active · Nouveau secteur</div>
+        <div class="zone-cities">Cannes et alentours<br>Côte d'Azur</div>
+        <div class="zone-soon">Ménage seul pour le moment</div>
       </div>
     </div>
   </div>
@@ -421,9 +421,11 @@ footer{background:var(--text);padding:2.5rem 3rem;display:flex;align-items:cente
         <div style="font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem">Zone</div>
         <div class="zone-selector">
           <button class="zone-btn active" id="zone-idf" onclick="setZone('idf')">Île-de-France</button>
-          <button class="zone-btn" id="zone-nice" onclick="setZone('nice')">Nice / Côte d'Azur</button>
+          <button class="zone-btn" id="zone-nice" onclick="setZone('nice')">Nice</button>
+          <button class="zone-btn" id="zone-cannes" onclick="setZone('cannes')">Cannes</button>
         </div>
         <div id="nice-notice" style="display:none;font-family:var(--sans);font-size:11px;color:var(--muted);background:rgba(44,74,53,.05);padding:.65rem .85rem;border-left:2px solid rgba(44,74,53,.2);margin-bottom:1rem;line-height:1.6">Tarifs spécifiques Nice / Côte d'Azur — linge et ménage adaptés à la zone.</div>
+        <div id="cannes-notice" style="display:none;font-family:var(--sans);font-size:11px;color:var(--muted);background:rgba(44,74,53,.05);padding:.65rem .85rem;border-left:2px solid rgba(44,74,53,.2);margin-bottom:1rem;line-height:1.6"><strong style="font-weight:500;color:var(--green)">Cannes : ménage seul pour le moment.</strong> La location de linge et les amenities ne sont pas encore disponibles sur ce secteur.</div>
 
         <div class="sim-step">
           <label class="sim-label">Configuration du logement</label>
@@ -457,7 +459,7 @@ footer{background:var(--text);padding:2.5rem 3rem;display:flex;align-items:cente
         <div class="sim-step">
           <label class="sim-label">Services</label>
           <div>
-            <div class="sim-toggle-row">
+            <div class="sim-toggle-row" id="row-linge">
               <span class="sim-toggle-label">Location de linge</span>
               <button class="toggle" id="tog-linge" onclick="toggleSvc('linge')"></button>
             </div>
@@ -480,7 +482,7 @@ footer{background:var(--text);padding:2.5rem 3rem;display:flex;align-items:cente
               </div>
             </div>
 
-            <div class="sim-toggle-row">
+            <div class="sim-toggle-row" id="row-amenities">
               <span class="sim-toggle-label">Amenities</span>
               <button class="toggle" id="tog-amenities" onclick="toggleSvc('amenities')"></button>
             </div>
@@ -647,19 +649,34 @@ footer{background:var(--text);padding:2.5rem 3rem;display:flex;align-items:cente
 <script>
 const TARIFS_IDF={studio:{1:27},1:{1:35.5,2:44.38},2:{1:50,2:60},3:{1:64,2:74.67,3:85.33},4:{1:74.64,2:85.33,3:96,4:106.67},5:{1:85.33,2:96,3:106.67,4:117.34,5:128.01}};
 const TARIFS_NICE={studio:{1:31},1:{1:41,2:51},2:{1:58,2:69},3:{1:74,2:86,3:98},4:{1:86,2:98,3:111,4:123},5:{1:98,2:111,3:123,4:135,5:148}};
+// Cannes = grille Nice + 15 %, arrondie à l'euro. Ménage seul : linge et amenities indisponibles sur ce secteur.
+const TARIFS_CANNES={studio:{1:36},1:{1:47,2:59},2:{1:67,2:79},3:{1:85,2:99,3:113},4:{1:99,2:113,3:128,4:141},5:{1:113,2:128,3:141,4:155,5:170}};
+const ZONE_LABEL={idf:'Île-de-France',nice:'Nice / Côte d\'Azur',cannes:'Cannes'};
 
 let currentZone='idf';
 const svcState={linge:false,amenities:false};
 const amState={cuisine:false,conso:false,hygiene:false,wc:false,cuisineplus:false};
 const lingeQty={double:0,simple:0};
 
-function setZone(z){currentZone=z;document.getElementById('zone-idf').classList.toggle('active',z==='idf');document.getElementById('zone-nice').classList.toggle('active',z==='nice');document.getElementById('nice-notice').style.display=z==='nice'?'block':'none';calc();}
+function setZone(z){currentZone=z;['idf','nice','cannes'].forEach(k=>document.getElementById('zone-'+k).classList.toggle('active',z===k));document.getElementById('nice-notice').style.display=z==='nice'?'block':'none';document.getElementById('cannes-notice').style.display=z==='cannes'?'block':'none';lockOptions(z==='cannes');calc();}
+function lockOptions(lock){
+  ['linge','amenities'].forEach(s=>{
+    const row=document.getElementById('row-'+s),tog=document.getElementById('tog-'+s);
+    if(lock){
+      svcState[s]=false;tog.classList.remove('on');
+      if(s==='linge'){document.getElementById('linge-panel').classList.remove('open');lingeQty.double=0;lingeQty.simple=0;document.getElementById('qty-double').textContent='0';document.getElementById('qty-simple').textContent='0';}
+      else{document.getElementById('amenities-panel').style.display='none';Object.keys(amState).forEach(a=>{amState[a]=false;document.getElementById('am-'+a).classList.remove('active');});}
+    }
+    tog.disabled=lock;row.style.opacity=lock?'.4':'1';row.style.pointerEvents=lock?'none':'auto';
+    row.title=lock?'Indisponible à Cannes pour le moment':'';
+  });
+}
 function getSdbOpts(bdr){if(bdr==='studio')return[1];return Array.from({length:parseInt(bdr)},(_,i)=>i+1);}
 function buildSdb(){const bdr=document.getElementById('bdr').value;const sel=document.getElementById('sdb');sel.innerHTML=getSdbOpts(bdr).map(n=>`<option value="${n}">${n}</option>`).join('');if(bdr==='studio'){sel.style.opacity='.4';sel.style.pointerEvents='none';}else{sel.style.opacity='1';sel.style.pointerEvents='auto';}}
 function onBdrChange(){buildSdb();calc();}
 function onSdbChange(){calc();}
 function onWcChange(){calc();}
-function toggleSvc(s){svcState[s]=!svcState[s];document.getElementById('tog-'+s).classList.toggle('on',svcState[s]);if(s==='linge')document.getElementById('linge-panel').classList.toggle('open',svcState[s]);else document.getElementById('amenities-panel').style.display=svcState[s]?'block':'none';calc();}
+function toggleSvc(s){if(currentZone==='cannes')return;svcState[s]=!svcState[s];document.getElementById('tog-'+s).classList.toggle('on',svcState[s]);if(s==='linge')document.getElementById('linge-panel').classList.toggle('open',svcState[s]);else document.getElementById('amenities-panel').style.display=svcState[s]?'block':'none';calc();}
 function changeQty(t,d){lingeQty[t]=Math.max(0,lingeQty[t]+d);document.getElementById('qty-'+t).textContent=lingeQty[t];calc();}
 function toggleAm(a){amState[a]=!amState[a];document.getElementById('am-'+a).classList.toggle('active',amState[a]);calc();}
 function fmt(n){return n.toFixed(2).replace('.',',');}
@@ -669,7 +686,7 @@ function calc(){
   const sdb=parseInt(document.getElementById('sdb').value)||1;
   const wc=Math.max(1,parseInt(document.getElementById('wc-count').value)||1);
   const guests=Math.max(1,parseInt(document.getElementById('guests').value)||1);
-  const tarifs=currentZone==='nice'?TARIFS_NICE:TARIFS_IDF;
+  const tarifs=currentZone==='nice'?TARIFS_NICE:currentZone==='cannes'?TARIFS_CANNES:TARIFS_IDF;
   const lingeSimple=currentZone==='nice'?19:8;
   const lingeDouble=currentZone==='nice'?24:12.5;
   const cuisineHT=1+(0.10*sdb);
@@ -717,7 +734,7 @@ function calc(){
 function buildTxt(){
   const bdr=window._bdr,sdb=window._sdb,wc=window._wc,guests=window._guests,zone=window._zone;
   let t='PURE PREMIUM CLEANING - Estimation\n';
-  t+='Zone : '+(zone==='idf'?'Île-de-France':'Nice / Côte d\'Azur')+'\n';
+  t+='Zone : '+(ZONE_LABEL[zone]||zone)+'\n';
   t+='--------------------------------\n';
   t+='Logement : '+(bdr==='studio'?'Studio':bdr+' BDR')+' / '+sdb+' SDB / '+wc+' WC\n';
   t+='Voyageurs : '+guests+'\n\n';
