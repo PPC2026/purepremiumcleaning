@@ -1,6 +1,6 @@
 # Site Pure Premium Cleaning (purepremiumcleaning.fr)
 
-Site statique servi par GitHub Pages depuis `main` : `index.html`, `paris.html`, `nice.html`, `services.html`, `a-propos.html`. Le simulateur de devis est dans `index.html` (constantes `TARIFS_IDF`, `TARIFS_NICE`, `TARIFS_CANNES`, fonctions `setZone`, `calc`). Noms de fichiers sensibles à la casse : `index.html` en minuscules.
+Site statique servi par GitHub Pages depuis `main` : `index.html`, `paris.html`, `nice.html`, `cannes.html`, `services.html`, `a-propos.html`, `mentions-legales.html`, `cgv.html`. Styles : `assets/brand/tokens.css` + `assets/site.css` ; scripts : `assets/site.js` (menu mobile), `assets/intro.js` (animation du logo). Le simulateur de devis est dans `index.html` (constantes `TARIFS_IDF`, `TARIFS_NICE`, `TARIFS_CANNES`, fonctions `setZone`, `calc` ; `index.html?zone=cannes#tarifs` ouvre une zone). Noms de fichiers sensibles à la casse : `index.html` en minuscules.
 
 ## Règle absolue : sur GitHub, uniquement le site
 
