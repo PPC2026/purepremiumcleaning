@@ -21,8 +21,23 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://purepremiumcleaning.fr/cannes.html</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://purepremiumcleaning.fr/a-propos.html</loc>
     <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://purepremiumcleaning.fr/mentions-legales.html</loc>
+    <priority>0.3</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://purepremiumcleaning.fr/cgv.html</loc>
+    <priority>0.3</priority>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

@@ -1,0 +1,81 @@
+/* Pure Premium Cleaning — tokens de design v1.0 (16/10/2026)
+   Palette « B épurée » : papier ≈55 %, lin 20 %, forêt 15 %, encre pour le texte, sauge ≈3 %.
+   Règle : le vert forêt est la couleur de la marque, jamais un statut. */
+
+@font-face { font-family: "Jost"; font-weight: 300; font-display: swap; src: url("fonts/Jost-Light.woff") format("woff"); }
+@font-face { font-family: "Jost"; font-weight: 400; font-display: swap; src: url("fonts/Jost-Regular.woff") format("woff"); }
+@font-face { font-family: "Jost"; font-weight: 500; font-display: swap; src: url("fonts/Jost-Medium.woff") format("woff"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 400; font-display: swap; src: url("fonts/InstrumentSans-Regular.woff") format("woff"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 500; font-display: swap; src: url("fonts/InstrumentSans-Medium.woff") format("woff"); }
+
+:root {
+  /* Couleurs de marque */
+  --ppc-papier: #FAF8F4;   /* fond principal */
+  --ppc-lin: #F2ECDF;      /* fonds de sections, cartes, étiquettes */
+  --ppc-lin-fonce: #E6E0D2;/* filets, bordures */
+  --ppc-foret: #1F3A2B;    /* marque : logo, titres forts, boutons, bandeaux */
+  --ppc-foret-2: #2E4E3C;  /* survol des éléments forêt */
+  --ppc-encre: #171A16;    /* texte */
+  --ppc-encre-2: #4A5246;  /* texte secondaire */
+  --ppc-encre-3: #6B695C;  /* légendes, mentions */
+  --ppc-sauge: #9DB09A;    /* touche rare : puce active, détail de la preuve photo */
+  --ppc-sauge-pale: #E3E9E0;
+
+  /* Statuts (jamais le vert de marque) */
+  --ppc-ok: #3E7C4F;  --ppc-ok-fond: #E4EFE5;
+  --ppc-attention: #935E10; --ppc-attention-fond: #F6EBD7;
+  --ppc-alerte: #A63A2B; --ppc-alerte-fond: #F5E2DE;
+
+  /* Rôles */
+  --fond: var(--ppc-papier);
+  --surface: var(--ppc-lin);
+  --texte: var(--ppc-encre);
+  --texte-2: var(--ppc-encre-2);
+  --texte-3: var(--ppc-encre-3);
+  --filet: var(--ppc-lin-fonce);
+  --marque: var(--ppc-foret);
+  --sur-marque: var(--ppc-papier);
+
+  /* Typographie */
+  --font-titre: "Jost", "Futura", "Century Gothic", sans-serif;
+  --font-texte: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --track-logo: .32em;   /* capitales du logo */
+  --track-label: .18em;  /* étiquettes en capitales (sur-titres, boutons secondaires) */
+  /* Échelle (desktop / mobile via clamp) */
+  --t-display: clamp(40px, 6vw, 76px);  /* Jost 300 */
+  --t-h1: clamp(32px, 4.2vw, 52px);     /* Jost 300 */
+  --t-h2: clamp(26px, 3vw, 38px);       /* Jost 300 */
+  --t-h3: 20px;                         /* Jost 400 */
+  --t-label: 12px;                      /* Jost 500 capitales, track-label */
+  --t-corps: 17px;                      /* Instrument Sans 400, interligne 1.6 */
+  --t-petit: 14px;
+  --t-mention: 12px;
+
+  /* Espacements (base 8) */
+  --e-1: 4px; --e-2: 8px; --e-3: 16px; --e-4: 24px; --e-5: 40px; --e-6: 64px; --e-7: 104px; --e-8: 160px;
+  --largeur: 1200px;
+
+  /* Formes */
+  --rayon-s: 4px;   /* étiquettes, champs */
+  --rayon: 10px;    /* cartes */
+  --rayon-pill: 999px; /* boutons */
+  --filet-fin: 1px solid var(--filet);
+  --ombre: none;    /* PPC n'utilise pas d'ombre portée */
+
+  /* Mouvement */
+  --ease-ppc: cubic-bezier(.7, 0, .2, 1);
+  --duree-deploiement: 900ms;
+  --duree-ui: 220ms;
+}
+
+/* Sections en forêt : inverser les rôles */
+.sur-foret {
+  --fond: var(--ppc-foret);
+  --surface: var(--ppc-foret-2);
+  --texte: var(--ppc-papier);
+  --texte-2: #C9D3C6;
+  --texte-3: #9FAE9F;
+  --filet: rgba(250, 248, 244, .16);
+  --marque: var(--ppc-papier);
+  --sur-marque: var(--ppc-foret);
+}

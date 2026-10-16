@@ -1,6 +1,6 @@
 # Site Pure Premium Cleaning (purepremiumcleaning.fr)
 
-Site statique servi par GitHub Pages depuis `main` : `index.html`, `paris.html`, `nice.html`, `services.html`, `a-propos.html`. Le simulateur de devis est dans `index.html` (constantes `TARIFS_IDF`, `TARIFS_NICE`, `TARIFS_CANNES`, fonctions `setZone`, `calc`). Noms de fichiers sensibles à la casse : `index.html` en minuscules.
+Site statique servi par GitHub Pages depuis `main` : `index.html`, `paris.html`, `nice.html`, `cannes.html`, `services.html`, `a-propos.html`, `mentions-legales.html`, `cgv.html`. Styles : `assets/brand/tokens.css` + `assets/site.css` ; scripts : `assets/site.js` (menu mobile), `assets/intro.js` (animation du logo). Le simulateur de devis est dans `index.html` (constantes `TARIFS_IDF`, `TARIFS_NICE`, `TARIFS_CANNES`, fonctions `setZone`, `calc` ; `index.html?zone=cannes#tarifs` ouvre une zone). Noms de fichiers sensibles à la casse : `index.html` en minuscules.
 
 ## Règle absolue : sur GitHub, uniquement le site
 
@@ -38,7 +38,11 @@ Si `brand-kit/` est absent, travaille avec le résumé ci-dessous et demande à 
 
 ## Photos de logements
 
-- Pour tous les emplacements de photos de logements (accueil, services, zones, pages Paris, Nice, Cannes), utilise les images générées avec Nano Banana pour la vidéo motion design PPC, enregistrées dans le projet de cette vidéo sur l'ordinateur de Quentin. Les droits ne posent pas de problème. Si tu ne les trouves pas, demande à Quentin où elles sont avant de continuer. Optimise-les pour le web (WebP ou JPEG, 1 600 px de large au plus) dans `assets/img/`.
+- Pour tous les emplacements de photos de logements (accueil, services, zones, pages Paris, Nice, Cannes), utilise les images de `assets/img/` : générées avec Nano Banana pour la vidéo motion design PPC, droits sans restriction, déjà optimisées en WebP. Ajoute un texte alternatif descriptif à chacune.
+  - `chambre-haussmannienne`, `salon-haussmannien`, `entree-haussmannienne`, `cuisine-paris`, `sejour-salle-a-manger`, `sdb-marbre-paris`, `sdb-vasque-paris` : intérieurs parisiens (accueil, page Paris, services).
+  - `chambre-nice-vue-mer` : Côte d'Azur (pages Nice et Cannes, carte de zone).
+  - `lit-coin-hotelier` : gros plan, idéal pour le cadre preuve photo ou la section « La preuve ».
+  - Pas de photo propre à Cannes : réutilise `chambre-nice-vue-mer` ou un intérieur neutre, sans légende qui la situe à Cannes.
 - **Cadre « preuve photo »** : une image générée ne doit jamais présenter une intervention précise comme réelle. Tant que Quentin n'a pas fourni une vraie photo de rapport, le tampon reste générique : « Rapport photo envoyé à chaque rotation », sans ville, heure ni nombre de photos. Le tampon détaillé (« Rotation terminée · ville · typologie · heure · nb photos ») est réservé aux vraies photos.
 - Jamais de visage ni de personne identifiable générée présentée comme un agent ou un client PPC.
 
