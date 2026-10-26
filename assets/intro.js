@@ -1,6 +1,7 @@
 /* Animation de déploiement du logo PPC, d'après brand-kit/kit/animation-deploiement.html.
-   Monogramme PP / C en fondu (300 ms), tenue, puis déploiement (900 ms, cubic-bezier(.7,0,.2,1)),
-   lettres en fondu 500 ms décalé de 250 ms, puis sortie en fondu (400 ms). Moins de 2 s au total.
+   Sigle PPC en fondu (300 ms), tenue, puis les trois initiales s'écartent vers leur place dans le logo
+   (900 ms, cubic-bezier(.7,0,.2,1)), le C descendant en seconde ligne ; à 550 ms du mouvement les mots
+   se révèlent entre elles (600 ms), puis sortie en fondu (400 ms). Un peu plus de 2 s au total.
    Premier chargement de la session seulement ; rien si prefers-reduced-motion. Chargé en tête de <body>. */
 (function () {
   var cle = 'ppc-intro-vue';
@@ -14,31 +15,42 @@
   intro.className = 'intro';
   intro.setAttribute('aria-hidden', 'true');
   intro.innerHTML =
-    '<div class="logo-a">' +
-      '<div class="l1"><span class="w"><span>P</span><span class="r">URE</span></span><span class="w"><span>P</span><span class="r">REMIUM</span></span></div>' +
-      '<div class="l2"><span class="w"><span>C</span><span class="r">LEANING</span></span></div>' +
+    '<div class="logo-a closed">' +
+      '<div class="sigle" aria-hidden="true"><span>P</span><span>P</span><span>C</span></div>' +
+      '<div class="l1"><span class="w"><span class="i">P</span><span class="r">URE</span></span><span class="w"><span class="i">P</span><span class="r">REMIUM</span></span></div>' +
+      '<div class="l2"><span class="w"><span class="i">C</span><span class="r">LEANING</span></span></div>' +
     '</div>';
   document.body.appendChild(intro);
-  var logo = intro.firstChild, rs = [].slice.call(logo.querySelectorAll('.r'));
+  var logo = intro.firstChild, inits = [].slice.call(logo.querySelectorAll('.i'));
+  var sigle = logo.querySelector('.sigle'), sig = [].slice.call(sigle.querySelectorAll('span'));
 
   function mesurer() {
-    rs.forEach(function (r) {
-      r.style.transition = 'none'; r.style.maxWidth = 'none';
-      r.dataset.w = r.scrollWidth;
-      r.style.maxWidth = ''; void r.offsetWidth; r.style.transition = '';
+    // Le sigle de mesure (invisible) est centré sur la hauteur du logo ; chaque initiale reçoit
+    // la transformation qui l'amène sur sa lettre du sigle.
+    var lr = logo.getBoundingClientRect(), sr = sigle.getBoundingClientRect();
+    sigle.style.top = ((lr.height - sr.height) / 2) + 'px';
+    inits.forEach(function (el) { el.style.transition = 'none'; el.style.transform = 'none'; });
+    void logo.offsetWidth;
+    var fs1 = parseFloat(getComputedStyle(sig[0]).fontSize);
+    inits.forEach(function (el, k) {
+      var a = sig[k].getBoundingClientRect(), b = el.getBoundingClientRect();
+      var sc = fs1 / parseFloat(getComputedStyle(el).fontSize);
+      el.dataset.t = 'translate(' + (a.left - b.left) + 'px,' + (a.bottom - b.bottom) + 'px) scale(' + sc + ')';
+      el.style.transform = el.dataset.t;
     });
+    inits.forEach(function (el) { void el.offsetWidth; el.style.transition = ''; });
   }
   function ouvrir() {
-    logo.classList.add('open');
-    rs.forEach(function (r) { r.style.maxWidth = r.dataset.w + 'px'; });
+    logo.classList.add('open'); logo.classList.remove('closed');
+    inits.forEach(function (el) { el.style.transform = 'none'; });
   }
   function fin() { if (intro.parentNode) intro.parentNode.removeChild(intro); }
   function lancer() {
     mesurer();
     setTimeout(function () { logo.classList.add('in'); }, 30);
     setTimeout(ouvrir, 500);
-    setTimeout(function () { intro.classList.add('out'); }, 1450);
-    setTimeout(fin, 1850);
+    setTimeout(function () { intro.classList.add('out'); }, 1750);
+    setTimeout(fin, 2150);
   }
 
   // On attend Jost (300 ms au plus) pour mesurer les lettres avec la bonne police.
