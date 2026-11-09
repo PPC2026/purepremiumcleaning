@@ -1,6 +1,6 @@
 # Site Pure Premium Cleaning (purepremiumcleaning.fr)
 
-Site statique servi par GitHub Pages depuis `main` : `index.html`, `paris.html`, `nice.html`, `cannes.html`, `services.html`, `a-propos.html`, `mentions-legales.html`, `cgv.html`. Styles : `assets/brand/tokens.css` + `assets/site.css` ; scripts : `assets/site.js` (menu mobile), `assets/intro.js` (animation du logo). Le simulateur de devis est dans `index.html` (constantes `TARIFS_IDF`, `TARIFS_NICE`, `TARIFS_CANNES`, fonctions `setZone`, `calc` ; `index.html?zone=cannes#tarifs` ouvre une zone). Noms de fichiers sensibles à la casse : `index.html` en minuscules.
+Site statique servi par GitHub Pages depuis `main` : `index.html`, `tarifs.html`, `paris.html`, `nice.html`, `cannes.html`, `services.html`, `a-propos.html`, `mentions-legales.html`, `cgv.html`. Styles : `assets/brand/tokens.css` + `assets/site.css` ; scripts : `assets/site.js` (menu mobile), `assets/intro.js` (animation du logo). Le simulateur de devis est dans `tarifs.html` depuis le 9 nov. 2026 (constantes `TARIFS_IDF`, `TARIFS_NICE`, `TARIFS_CANNES`, fonctions `setZone`, `calc` ; `/tarifs.html?zone=cannes` ouvre une zone). L'accueil n'a plus qu'un encart « Le prix avant le devis » avec les prix de départ et un bouton vers `/tarifs.html` : si la grille change, mets à jour les prix « dès » de l'encart, du haut de `tarifs.html`, de sa FAQ et des titres des pages ville. Noms de fichiers sensibles à la casse : `index.html` en minuscules.
 
 ## Règle absolue : sur GitHub, uniquement le site
 

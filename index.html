@@ -70,14 +70,14 @@
 <header class="entete">
   <div class="wrap hd">
     <a class="logo" href="#"><img src="assets/brand/logo/ppc-logo-foret.svg" alt="Pure Premium Cleaning, accueil" width="1047" height="147"></a>
-    <nav aria-label="Navigation principale"><a href="services.html">Services</a><a href="#preuve">La preuve</a><a href="#tarifs">Tarifs</a><a href="#zones">Zones</a><a href="#fondateurs">Fondateurs</a></nav>
+    <nav aria-label="Navigation principale"><a href="services.html">Services</a><a href="#preuve">La preuve</a><a href="/tarifs.html">Tarifs</a><a href="#zones">Zones</a><a href="#fondateurs">Fondateurs</a></nav>
     <div class="actions">
       <a class="btn btn-trait btn-s" href="https://wa.me/33781137754" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="btn btn-plein btn-s" href="#tarifs">Simuler un devis</a>
+      <a class="btn btn-plein btn-s" href="/tarifs.html">Simuler un devis</a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 8H20M4 16H20"/></svg></button>
     </div>
   </div>
-  <nav class="menu-mobile" id="menu-mobile" aria-label="Menu mobile"><div class="wrap"><a href="services.html">Services</a><a href="#preuve">La preuve</a><a href="#tarifs">Tarifs</a><a href="#zones">Zones</a><a href="#fondateurs">Fondateurs</a><a href="paris.html">Paris</a><a href="nice.html">Nice</a><a href="cannes.html">Cannes</a><a class="btn btn-trait" href="https://wa.me/33781137754" target="_blank" rel="noopener"><svg class="" aria-hidden="true"><use href="#i-message"/></svg> WhatsApp</a></div></nav>
+  <nav class="menu-mobile" id="menu-mobile" aria-label="Menu mobile"><div class="wrap"><a href="services.html">Services</a><a href="#preuve">La preuve</a><a href="/tarifs.html">Tarifs</a><a href="#zones">Zones</a><a href="#fondateurs">Fondateurs</a><a href="paris.html">Paris</a><a href="nice.html">Nice</a><a href="cannes.html">Cannes</a><a class="btn btn-trait" href="https://wa.me/33781137754" target="_blank" rel="noopener"><svg class="" aria-hidden="true"><use href="#i-message"/></svg> WhatsApp</a></div></nav>
 </header>
 <main>
 
@@ -86,7 +86,7 @@
     <div class="label">Ménage Airbnb et location courte durée · Paris · Nice · Cannes</div>
     <h1>Une qualité<br>qui ne varie pas.</h1>
     <p class="lead">Ménage, nettoyage, linge hôtelier et amenities pour les conciergeries et propriétaires de logements Airbnb, Booking et Abritel. Nos tarifs sont publics, chaque intervention est prouvée en photo.</p>
-    <div class="cta"><a class="btn btn-plein" href="#tarifs">Simuler un devis <svg aria-hidden="true"><use href="#i-fleche"/></svg></a><a class="btn btn-trait" href="https://wa.me/33781137754" target="_blank" rel="noopener"><svg class="" aria-hidden="true"><use href="#i-message"/></svg> Nous écrire</a></div>
+    <div class="cta"><a class="btn btn-plein" href="/tarifs.html">Simuler un devis <svg aria-hidden="true"><use href="#i-fleche"/></svg></a><a class="btn btn-trait" href="https://wa.me/33781137754" target="_blank" rel="noopener"><svg class="" aria-hidden="true"><use href="#i-message"/></svg> Nous écrire</a></div>
     <div class="signature">Chaque rotation compte.</div>
   </div>
   <figure class="preuve">
@@ -119,39 +119,13 @@
   </div>
 </div></section>
 
-<section id="tarifs"><div class="wrap">
-  <div class="tete"><div><div class="label">Tarifs publics</div><h2>Le prix avant le devis.</h2></div><p class="muted">Configurez votre logement : le tarif s'affiche instantanément, hors taxes. Tarifs standards, hors remise volume. Pour un portefeuille de logements, écrivez-nous.</p></div>
-  <div class="sim">
-    <div class="panneau">
-      <div class="zones-sel" role="group" aria-label="Zone d'intervention">
-        <button type="button" class="active" id="zone-idf" aria-pressed="true" onclick="setZone('idf')">Paris</button><button type="button" id="zone-nice" aria-pressed="false" onclick="setZone('nice')">Nice</button><button type="button" id="zone-cannes" aria-pressed="false" onclick="setZone('cannes')">Cannes</button>
-      </div>
-      <p class="zone-note" id="nice-notice" hidden>Tarifs spécifiques Nice et Côte d'Azur : ménage et linge adaptés à la zone.</p>
-      <div class="indispo" id="cannes-notice" hidden><b>Cannes : ménage seul pour le moment.</b> La location de linge et les amenities ne sont pas encore disponibles sur ce secteur.</div>
-      <div class="lignes">
-        <fieldset class="ligne"><legend>Chambres</legend><div class="chips" id="bdr-chips">
-          <label><input type="radio" name="bdr" value="studio" checked onchange="onBdrChange()"><span>Studio</span></label><label><input type="radio" name="bdr" value="1" onchange="onBdrChange()"><span>1</span></label><label><input type="radio" name="bdr" value="2" onchange="onBdrChange()"><span>2</span></label><label><input type="radio" name="bdr" value="3" onchange="onBdrChange()"><span>3</span></label><label><input type="radio" name="bdr" value="4" onchange="onBdrChange()"><span>4</span></label><label><input type="radio" name="bdr" value="5" onchange="onBdrChange()"><span>5</span></label>
-        </div></fieldset>
-        <fieldset class="ligne"><legend>Salles de bain</legend><div class="chips" id="sdb-chips"></div></fieldset>
-        <div class="ligne"><label for="wc-count">WC</label><div class="stepper"><button type="button" aria-label="Un WC de moins" onclick="step('wc-count',-1)">−</button><input type="number" id="wc-count" value="1" min="1" max="10" inputmode="numeric" oninput="onWcChange()"><button type="button" aria-label="Un WC de plus" onclick="step('wc-count',1)">+</button></div></div>
-        <div class="ligne"><label for="guests">Voyageurs</label><div class="stepper"><button type="button" aria-label="Un voyageur de moins" onclick="step('guests',-1)">−</button><input type="number" id="guests" value="2" min="1" max="20" inputmode="numeric" oninput="calc()"><button type="button" aria-label="Un voyageur de plus" onclick="step('guests',1)">+</button></div></div>
-        <div class="ligne opt" id="row-double"><span><span class="nom">Kit lit double</span><span class="prix-u" id="prix-double">12,50 € HT / kit</span></span><div class="stepper"><button type="button" aria-label="Un kit lit double de moins" onclick="changeQty('double',-1)">−</button><output id="qty-double" aria-live="polite">1</output><button type="button" aria-label="Un kit lit double de plus" onclick="changeQty('double',1)">+</button></div><span class="na">Indisponible</span></div>
-        <div class="ligne opt" id="row-simple"><span><span class="nom">Kit lit simple</span><span class="prix-u" id="prix-simple">8,00 € HT / kit</span></span><div class="stepper"><button type="button" aria-label="Un kit lit simple de moins" onclick="changeQty('simple',-1)">−</button><output id="qty-simple" aria-live="polite">0</output><button type="button" aria-label="Un kit lit simple de plus" onclick="changeQty('simple',1)">+</button></div><span class="na">Indisponible</span></div>
-        <div class="ligne opt" id="row-amenities"><span><span class="nom">Amenities</span><span class="prix-u">Cumulables, à la carte</span></span><div class="chips" role="group" aria-label="Amenities"><button type="button" id="am-cuisine" aria-pressed="false" onclick="toggleAm('cuisine')">Cuisine</button><button type="button" id="am-conso" aria-pressed="false" onclick="toggleAm('conso')">Conso</button><button type="button" id="am-hygiene" aria-pressed="false" onclick="toggleAm('hygiene')">Hygiène</button><button type="button" id="am-wc" aria-pressed="false" onclick="toggleAm('wc')">WC</button><button type="button" id="am-cuisineplus" aria-pressed="false" onclick="toggleAm('cuisineplus')">Cuisine +</button></div><span class="na">Indisponible</span></div>
-        <div class="ligne opt detail" id="row-am-detail"><span class="prix-u">Cuisine <span id="am-cuisine-price">1,10 € HT</span> : torchon, éponge, dosette vaisselle, sacs poubelle · Conso <span id="am-conso-price">0,25 € x 2 pers.</span> : café, thé · Hygiène <span id="am-hygiene-price">selon linge</span> : shampoing, gel douche, savon, selon les kits · WC <span id="am-wc-price">0,50 € x 1 WC</span> : 2 rouleaux par WC · Cuisine + 0,42 € HT : dosette lave-vaisselle, lessive</span></div>
-      </div>
-    </div>
-    <div class="etiquette" aria-live="polite">
-      <div class="label" id="et-zone">Votre tarif · Paris</div>
-      <div class="public">Prix public</div>
-      <div class="total"><span id="et-total">42,85</span><small>€ HT</small></div>
-      <div class="ttc">par rotation · soit <span id="et-ttc">51,42</span> € TTC</div>
-      <div class="det" id="sim-result"></div>
-      <button type="button" class="btn btn-plein" onclick="sendWa()">Envoyer ma demande</button>
-      <button type="button" class="btn btn-trait" onclick="copyDevis()">Copier le devis</button>
-      <p class="mention">Par WhatsApp ou <a href="mailto:contact@purepremiumcleaning.fr" id="mail-devis" onclick="mailDevis(this)">par e-mail</a>, avec votre configuration jointe.<br>Tarifs standards, hors remise volume. TVA 20 %.</p>
-    </div>
-  </div>
+<section id="tarifs"><div class="wrap deux centre">
+  <div><div class="label">Tarifs publics</div><h2 style="margin-top:16px">Le prix avant le devis.</h2>
+    <p class="muted" style="margin-top:20px">Le prix dépend du nombre de chambres et de salles de bain, pas du temps passé. Configurez votre logement : le tarif s'affiche instantanément, hors taxes. Tarifs standards, hors remise volume.</p>
+    <p style="margin-top:28px"><a class="btn btn-plein" href="/tarifs.html">Simuler un devis <svg aria-hidden="true"><use href="#i-fleche"/></svg></a></p></div>
+  <div class="carte trait" style="background:var(--ppc-papier)"><table class="tarifs"><thead><tr><th scope="col">Ménage d'un studio</th><th scope="col">€ HT</th></tr></thead><tbody>
+    <tr><td>Paris et première couronne</td><td>dès 27,00</td></tr><tr><td>Nice et Côte d'Azur</td><td>dès 31,00</td></tr><tr><td>Cannes</td><td>dès 36,00</td></tr>
+  </tbody></table></div>
 </div></section>
 
 <section class="filet" id="coordination"><div class="wrap coord">
@@ -195,133 +169,16 @@
   <div class="label">Pure Premium Cleaning</div>
   <div class="big">Chaque rotation compte.</div>
   <p>Conciergerie ou propriétaire à Paris, Nice ou Cannes : obtenez votre tarif en une minute, ou écrivez-nous directement.</p>
-  <div class="cta"><a class="btn btn-plein" href="/#tarifs">Simuler un devis <svg aria-hidden="true"><use href="#i-fleche"/></svg></a><a class="btn btn-trait" href="https://wa.me/33781137754" target="_blank" rel="noopener"><svg class="" aria-hidden="true"><use href="#i-message"/></svg> WhatsApp · réponse rapide</a></div>
+  <div class="cta"><a class="btn btn-plein" href="/tarifs.html">Simuler un devis <svg aria-hidden="true"><use href="#i-fleche"/></svg></a><a class="btn btn-trait" href="https://wa.me/33781137754" target="_blank" rel="noopener"><svg class="" aria-hidden="true"><use href="#i-message"/></svg> WhatsApp · réponse rapide</a></div>
 </div></section>
 </main>
 
 <footer class="pied"><div class="wrap fg2">
   <div><img src="assets/brand/logo/ppc-logo-foret.svg" alt="Pure Premium Cleaning" width="1047" height="147" loading="lazy">
     <p class="contact"><a href="mailto:contact@purepremiumcleaning.fr">contact@purepremiumcleaning.fr</a><a href="https://wa.me/33781137754" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/purepremium_cleaning" target="_blank" rel="noopener">@purepremium_cleaning</a></p></div>
-  <nav aria-label="Pied de page"><a href="paris.html">Paris</a><a href="nice.html">Nice</a><a href="cannes.html">Cannes</a><a href="services.html">Services</a><a href="a-propos.html">À propos</a><a href="mentions-legales.html">Mentions légales</a><a href="cgv.html">CGV</a></nav>
+  <nav aria-label="Pied de page"><a href="paris.html">Paris</a><a href="nice.html">Nice</a><a href="cannes.html">Cannes</a><a href="services.html">Services</a><a href="tarifs.html">Tarifs</a><a href="a-propos.html">À propos</a><a href="mentions-legales.html">Mentions légales</a><a href="cgv.html">CGV</a></nav>
   <p class="legal-l">Pure Premium Cleaning SAS · 60 rue François 1er, 75008 Paris · SIRET 940 351 091 00019 · © 2026</p>
 </div></footer>
 <script src="assets/site.js" defer></script>
-<script>
-/* Simulateur de devis. Les grilles, les prix du linge et des amenities, le supplément cuisine (0,10 €/SDB),
-   le verrouillage Cannes, la copie du devis et l'envoi WhatsApp sont ceux du simulateur d'origine : seul l'habillage change. */
-const TARIFS_IDF={studio:{1:27},1:{1:35.5,2:44.38},2:{1:50,2:60},3:{1:64,2:74.67,3:85.33},4:{1:74.64,2:85.33,3:96,4:106.67},5:{1:85.33,2:96,3:106.67,4:117.34,5:128.01}};
-const TARIFS_NICE={studio:{1:31},1:{1:41,2:51},2:{1:58,2:69},3:{1:74,2:86,3:98},4:{1:86,2:98,3:111,4:123},5:{1:98,2:111,3:123,4:135,5:148}};
-// Cannes = grille Nice + 15 %, arrondie à l'euro. Ménage seul : linge et amenities indisponibles sur ce secteur.
-const TARIFS_CANNES={studio:{1:36},1:{1:47,2:59},2:{1:67,2:79},3:{1:85,2:99,3:113},4:{1:99,2:113,3:128,4:141},5:{1:113,2:128,3:141,4:155,5:170}};
-const ZONE_LABEL={idf:'Île-de-France',nice:'Nice / Côte d\'Azur',cannes:'Cannes'};
-const ZONE_COURT={idf:'Paris',nice:'Nice',cannes:'Cannes'};
-
-let currentZone='idf';
-// Configuration affichée par défaut : studio, 2 voyageurs, 1 kit lit double, hygiène + cuisine + conso + WC.
-const svcState={linge:true,amenities:true};
-const amState={cuisine:true,conso:true,hygiene:true,wc:true,cuisineplus:false};
-const lingeQty={double:1,simple:0};
-
-function setZone(z){
-  currentZone=z;
-  ['idf','nice','cannes'].forEach(k=>{const b=document.getElementById('zone-'+k);b.classList.toggle('active',z===k);b.setAttribute('aria-pressed',z===k?'true':'false');});
-  document.getElementById('nice-notice').hidden=z!=='nice';
-  document.getElementById('cannes-notice').hidden=z!=='cannes';
-  lockOptions(z==='cannes');calc();
-}
-function lockOptions(lock){
-  if(lock){
-    svcState.linge=false;svcState.amenities=false;
-    lingeQty.double=0;lingeQty.simple=0;
-    document.getElementById('qty-double').textContent='0';document.getElementById('qty-simple').textContent='0';
-    Object.keys(amState).forEach(a=>{amState[a]=false;});
-  }
-  ['row-double','row-simple','row-amenities','row-am-detail'].forEach(id=>{
-    const row=document.getElementById(id);row.classList.toggle('locked',lock);
-    row.title=lock?'Indisponible à Cannes pour le moment':'';
-    row.querySelectorAll('button').forEach(b=>{b.disabled=lock;});
-  });
-  syncAm();
-}
-function syncAm(){Object.keys(amState).forEach(a=>document.getElementById('am-'+a).setAttribute('aria-pressed',amState[a]?'true':'false'));}
-function getBdr(){const r=document.querySelector('input[name=bdr]:checked');return r?r.value:'studio';}
-function getSdbOpts(bdr){if(bdr==='studio')return[1];return Array.from({length:parseInt(bdr)},(_,i)=>i+1);}
-function buildSdb(){
-  const bdr=getBdr(),opts=getSdbOpts(bdr),cur=document.querySelector('input[name=sdb]:checked');
-  const sel=Math.min(cur?parseInt(cur.value):1,opts.length);
-  document.getElementById('sdb-chips').innerHTML=opts.map(n=>`<label><input type="radio" name="sdb" value="${n}"${n===sel?' checked':''}${bdr==='studio'?' disabled':''} onchange="onSdbChange()"><span>${n}</span></label>`).join('');
-}
-function onBdrChange(){buildSdb();calc();}
-function onSdbChange(){calc();}
-function onWcChange(){calc();}
-function step(id,d){const i=document.getElementById(id);const v=(parseInt(i.value)||0)+d;i.value=Math.min(parseInt(i.max),Math.max(parseInt(i.min),v));calc();}
-function changeQty(t,d){if(currentZone==='cannes')return;lingeQty[t]=Math.max(0,lingeQty[t]+d);document.getElementById('qty-'+t).textContent=lingeQty[t];svcState.linge=lingeQty.double+lingeQty.simple>0;calc();}
-function toggleAm(a){if(currentZone==='cannes')return;amState[a]=!amState[a];svcState.amenities=Object.values(amState).some(Boolean);syncAm();calc();}
-function fmt(n){return n.toFixed(2).replace('.',',');}
-
-function calc(){
-  const bdr=getBdr();
-  const sdbEl=document.querySelector('input[name=sdb]:checked');
-  const sdb=parseInt(sdbEl&&sdbEl.value)||1;
-  const wc=Math.max(1,parseInt(document.getElementById('wc-count').value)||1);
-  const guests=Math.max(1,parseInt(document.getElementById('guests').value)||1);
-  const tarifs=currentZone==='nice'?TARIFS_NICE:currentZone==='cannes'?TARIFS_CANNES:TARIFS_IDF;
-  const lingeSimple=currentZone==='nice'?19:8;
-  const lingeDouble=currentZone==='nice'?24:12.5;
-  const cuisineHT=1+(0.10*sdb);
-  document.getElementById('am-cuisine-price').textContent=fmt(cuisineHT)+' € HT';
-  document.getElementById('am-conso-price').textContent='0,25 € x '+guests+' pers.';
-  document.getElementById('am-wc-price').textContent='0,50 € x '+wc+' WC';
-  document.getElementById('prix-simple').textContent=fmt(lingeSimple)+' € HT / kit';
-  document.getElementById('prix-double').textContent=fmt(lingeDouble)+' € HT / kit';
-  const nd=lingeQty.double,ns=lingeQty.simple;
-  const hygHT=nd*1.25+ns*0.67;
-  document.getElementById('am-hygiene-price').textContent=(nd>0||ns>0)?fmt(hygHT)+' € HT':'selon linge';
-  const menageHT=(tarifs[bdr]||{})[sdb]||Object.values(tarifs[bdr]||{1:0})[0];
-  let rows=[],total=menageHT;
-  rows.push({label:'Ménage - '+(bdr==='studio'?'Studio':bdr+' BDR')+', '+sdb+' SDB',val:fmt(menageHT)+' €'});
-  if(svcState.linge){
-    if(nd>0||ns>0){const v=nd*lingeDouble+ns*lingeSimple;total+=v;rows.push({label:'Linge - '+(nd>0?nd+'x double':'')+(nd>0&&ns>0?' + ':'')+(ns>0?ns+'x simple':''),val:fmt(v)+' €'});}
-    else rows.push({label:'Linge (aucun kit)',val:'0,00 €'});
-  }
-  if(svcState.amenities){
-    let any=false;
-    if(amState.cuisine){total+=cuisineHT;rows.push({label:'Amenity - Cuisine ('+sdb+' SDB)',val:fmt(cuisineHT)+' €'});any=true;}
-    if(amState.conso){const v=0.25*guests;total+=v;rows.push({label:'Amenity - Conso (x'+guests+')',val:fmt(v)+' €'});any=true;}
-    if(amState.hygiene){if(hygHT>0){total+=hygHT;rows.push({label:'Amenity - Hygiène',val:fmt(hygHT)+' €'});any=true;}else rows.push({label:'Amenity - Hygiène (aucun linge)',val:'0,00 €'});}
-    if(amState.wc){const v=0.5*wc;total+=v;rows.push({label:'Amenity - Pack WC (x'+wc+')',val:fmt(v)+' €'});any=true;}
-    if(amState.cuisineplus){total+=0.42;rows.push({label:'Amenity - Cuisine +',val:'0,42 €'});any=true;}
-    if(!any)rows.push({label:'Amenities (aucun pack)',val:'0,00 €'});
-  }
-  const ttc=total*1.2;
-  window._rows=rows;window._ht=total;window._ttc=ttc;
-  window._bdr=bdr;window._sdb=sdb;window._wc=wc;window._guests=guests;window._zone=currentZone;
-  // Habillage : étiquette de prix forêt.
-  document.getElementById('et-zone').textContent='Votre tarif · '+ZONE_COURT[currentZone];
-  document.getElementById('et-total').textContent=fmt(total);
-  document.getElementById('et-ttc').textContent=fmt(ttc);
-  const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
-  document.getElementById('sim-result').innerHTML=rows.map(r=>'<div><span>'+esc(r.label.replace(' - ',' · '))+'</span><span>'+esc(r.val)+'</span></div>').join('');
-}
-
-function buildTxt(){
-  const bdr=window._bdr,sdb=window._sdb,wc=window._wc,guests=window._guests,zone=window._zone;
-  let t='PURE PREMIUM CLEANING - Estimation\n';
-  t+='Zone : '+(ZONE_LABEL[zone]||zone)+'\n';
-  t+='--------------------------------\n';
-  t+='Logement : '+(bdr==='studio'?'Studio':bdr+' BDR')+' / '+sdb+' SDB / '+wc+' WC\n';
-  t+='Voyageurs : '+guests+'\n\n';
-  (window._rows||[]).forEach(r=>{t+=r.label+' : '+r.val+'\n';});
-  t+='\n--------------------------------\n';
-  t+='Total HT : '+fmt(window._ht||0)+' €\nTotal TTC : '+fmt(window._ttc||0)+' €';
-  return t;
-}
-function copyDevis(){const b=event.currentTarget||event.target;navigator.clipboard.writeText(buildTxt()).then(()=>{b.textContent='Devis copié';setTimeout(()=>{b.textContent='Copier le devis';},2000);}).catch(()=>{});}
-function sendWa(){const txt=encodeURIComponent('Bonjour Pure Premium Cleaning,\n\nVoici ma simulation :\n\n'+buildTxt()+'\n\nPouvez-vous me contacter ?');window.open('https://wa.me/33781137754?text='+txt,'_blank');}
-function mailDevis(a){a.href='mailto:contact@purepremiumcleaning.fr?subject='+encodeURIComponent('Demande de devis')+'&body='+encodeURIComponent('Bonjour Pure Premium Cleaning,\n\nVoici ma simulation :\n\n'+buildTxt()+'\n\nPouvez-vous me contacter ?');}
-
-buildSdb();syncAm();
-(function(){const z={paris:'idf',idf:'idf',nice:'nice',cannes:'cannes'}[new URLSearchParams(location.search).get('zone')];setZone(z||'idf');})();
-</script>
 </body>
 </html>
